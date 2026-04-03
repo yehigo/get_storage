@@ -1,3 +1,6 @@
+## [2.1.2] 
+- Migrated from dart:html to package:web
+
 ## [2.1.0] 
 - Add support to Getx5
 

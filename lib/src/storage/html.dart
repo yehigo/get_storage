@@ -6,7 +6,7 @@ import '../value.dart';
 
 class StorageImpl {
   StorageImpl(this.fileName, [this.path]);
-  Storage get localStorage_ => window.localStorage;
+  Storage get localStorage => window.localStorage;
 
   final String? path;
   final String fileName;
@@ -15,7 +15,7 @@ class StorageImpl {
       ValueStorage<Map<String, dynamic>>(<String, dynamic>{});
 
   void clear() {
-    localStorage_.removeItem(fileName);
+    localStorage.removeItem(fileName);
     subject.value?.clear();
 
     subject
@@ -69,11 +69,11 @@ class StorageImpl {
 
   Future<void> _writeToStorage(Map<String, dynamic>? data) async {
     if (data == null) return;
-    localStorage_.setItem(fileName, json.encode(data));
+    localStorage.setItem(fileName, json.encode(data));
   }
 
   Future<Map<String, dynamic>?> _readFromStorage() async {
-    final dataFromLocal_ = localStorage_.getItem(fileName);
+    final dataFromLocal_ = localStorage.getItem(fileName);
     if (dataFromLocal_ != null) {
       subject.value = json.decode(dataFromLocal_) as Map<String, dynamic>;
       return subject.value;
